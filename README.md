@@ -29,7 +29,7 @@ gits.sh push
 ```
   
 # Recommend
-If you set follow alias, you can use git  
+If you set follow alias, you can use git command without thinking. 
 ```
 alias git="/path-to-gits.sh/gits.sh"
 ```
