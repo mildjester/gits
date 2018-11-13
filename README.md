@@ -5,23 +5,19 @@ In use github, this script change your secret key automaticaly by repository use
 # Installation
 Download `gits.sh`, and make this script executable.  
 
-set alias (edit bashrc and so on)  
+Set alias (edit bashrc and so on)  
 ```
-ex)
-alias gits="/path-to-gits.sh/gits.sh"
+# ex)
+alias gits="/path-to-gits-repository/gits.sh"
+
+# or replace git command
+alias git="/path-to-gits-repository/gits.sh"
 ```
 
-or deploy bin dir.  
+If you use `ghq` command, you should set as follow.
 ```
-ex)
-ln -s /path-to-gits.sh/gits.sh /usr/local/bin/gits
-```
-
-You can also replace this script with the git command.  
-```
-alias git="/path-to-gits.sh/gits.sh"
-or
-ln -s /path-to-gits.sh/gits.sh /usr/local/bin/git
+# ex)
+alias ghq_get="/path-to-gits-repository/ghq_get.sh"
 ```
 
 
@@ -50,4 +46,6 @@ You can use This script as `git` command.
 gits clone git@github.com:hoge/fuga.git
 gits pull
 gits push
+
+ghq_gets git@github.com:hoge/fuga.git
 ```
