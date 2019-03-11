@@ -18,7 +18,14 @@ fi
 
 # load setting
 DIR=`dirname $0`
+if [ ! -e ${DIR}/config ]; then
+    echo "Error: config file not found"
+    exit 1
+fi
 source ${DIR}/config
+source ${DIR}/main.sh
+
+command=`which git`
 
 # check target repository user
 if [ $1 == "clone" ]; then
@@ -29,27 +36,4 @@ else
     tmpUser=`git remote -v | grep origin | grep fetch`
 fi
 
-if [[ ${tmpUser} =~ ^.*github.com(:|/)([0-9a-zA-Z]+)/.*$ ]]; then
-    repoUser=${BASH_REMATCH[2]}
-    echo "[Info] This repository user is [${repoUser}]."
-else
-    echo "[Info] This repository is not GitHub."
-    git $@
-    exit 0
-fi
-
-# choise use key
-useKey=${defaultKey}
-for index in "${specialKeys[@]}" ; do
-    user="${index%%::*}"
-    key="${index##*::}"
-    if [ $user == $repoUser ]; then
-        useKey=${key}
-    fi
-done
-
-echo "[Info] The key used is [${useKey}]."
-
-export GIT_SSH_COMMAND="ssh -i ${useKey}"
-git $@
-unset GIT_SSH_COMMAND
+main "${command}" "${tmpUser}" "${@}"

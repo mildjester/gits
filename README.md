@@ -1,5 +1,7 @@
 # Description
 
+[日本語はこちら](README_JP.md)
+
 In use github, this script change your secret key automaticaly by repository user.  
 
 # Installation
@@ -17,7 +19,7 @@ alias git="/path-to-gits-repository/gits.sh"
 If you use `ghq` command, you should set as follow.
 ```
 # ex)
-alias ghq_get="/path-to-gits-repository/ghq_get.sh"
+alias ghqs="/path-to-gits-repository/ghqs.sh"
 ```
 
 
@@ -47,5 +49,5 @@ gits clone git@github.com:hoge/fuga.git
 gits pull
 gits push
 
-ghq_gets git@github.com:hoge/fuga.git
+ghqs get git@github.com:hoge/fuga.git
 ```
